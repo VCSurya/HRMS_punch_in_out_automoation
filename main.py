@@ -193,7 +193,7 @@ def ping():
     else:
         logging.error("Scheduled punch canceled due to login failure.")
 
-
+    return "Server is alive!"
 
 # -----------------------------------------------------
 # Flask Run
