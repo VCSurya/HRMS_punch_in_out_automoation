@@ -6,13 +6,14 @@ from datetime import datetime, timedelta
 import requests
 import logging
 from pytz import timezone
+from zoneinfo import ZoneInfo
 
 # -----------------------------------------------------
 # Flask App + Scheduler Setup
 # -----------------------------------------------------
 app = Flask(__name__)
 
-scheduler = BackgroundScheduler(timezone=timezone("Asia/Kolkata"))
+scheduler = BackgroundScheduler(timezone=ZoneInfo("Asia/Kolkata"))
 
 session = requests.Session()
 logging.basicConfig(level=logging.INFO)
@@ -98,7 +99,7 @@ def job_login_then_punch():
 def schedule_job_after_9_hours():
     try:
         # run_time = datetime.now() + timedelta(hours=9, minutes=5)
-        run_time = datetime.now() + timedelta(minutes=2)
+        run_time = datetime.now(ZoneInfo("Asia/Kolkata")) + timedelta(minutes=2)
 
         scheduler.add_job(
             job_login_then_punch,  # <--- updated here
