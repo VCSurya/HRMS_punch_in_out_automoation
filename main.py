@@ -185,7 +185,7 @@ def job_status():
 # -----------------------------------------------------
 # Route: for keep server alive
 # -----------------------------------------------------
-@app.route("/")
+@app.route("/punch")
 def ping():
     response = login()
     if response.get("success", False):   # <--- LOGIN FIRST
