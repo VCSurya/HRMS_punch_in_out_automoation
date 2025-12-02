@@ -187,7 +187,12 @@ def job_status():
 # -----------------------------------------------------
 @app.route("/")
 def ping():
-    return f"Tiger abhi zinda hai.{datetime.now()}"
+    response = login()
+    if response.get("success", False):   # <--- LOGIN FIRST
+        punch_in_out()  # <--- THEN PUNCH
+    else:
+        logging.error("Scheduled punch canceled due to login failure.")
+
 
 
 # -----------------------------------------------------
