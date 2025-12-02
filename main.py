@@ -186,7 +186,7 @@ def job_status():
 # -----------------------------------------------------
 @app.route("/")
 def ping():
-    return "Tiger abhi zinda hai."
+    return f"Tiger abhi zinda hai.{datetime.now()}"
 
 
 # -----------------------------------------------------
