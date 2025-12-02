@@ -131,8 +131,8 @@ def auto_punch():
         
         is_punched_in = "Punch Out" in login_result.get("data", "")
         
+        schedule_job_after_9_hours()
         if not is_punched_in:
-            schedule_job_after_9_hours()
             job = scheduler.get_job("punch_job")
             if job:
                 return jsonify({
