@@ -1,0 +1,5 @@
+Flask
+APScheduler
+beautifulsoup4
+requests
+pytz
