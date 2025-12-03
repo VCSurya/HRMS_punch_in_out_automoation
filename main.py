@@ -1,3 +1,4 @@
+from xmlrpc.client import Server
 from flask import Flask, jsonify
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -80,9 +81,13 @@ def ping():
     if response.get("success", False):   # <--- LOGIN FIRST
         punch_in_out()  # <--- THEN PUNCH
     else:
-        logging.error("Scheduled punch canceled due to login failure.")
+        return jsonify({"msg":"Scheduled punch canceled due to login failure."})
 
-    return "Server is alive!"
+    return jsonify({"msg":"Puch attempt completed!"})
+
+@app.route("/")
+def ping():
+    return jsonify({"msg":"Server is alive!"})      
 
 # -----------------------------------------------------
 # Flask Run
