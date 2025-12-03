@@ -86,7 +86,7 @@ def ping():
     return jsonify({"msg":"Puch attempt completed!"})
 
 @app.route("/")
-def ping():
+def live():
     return jsonify({"msg":"Server is alive!"})      
 
 # -----------------------------------------------------
